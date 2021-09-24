@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 799800331}
   - component: {fileID: 799800334}
   - component: {fileID: 8073413158372243314}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Detection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

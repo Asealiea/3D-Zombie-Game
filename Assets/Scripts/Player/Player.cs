@@ -99,9 +99,22 @@ public class Player : MonoBehaviour
         #region Look up and down
         //look up and down
         Vector3 cameraRotation = _camera.gameObject.transform.localEulerAngles;
-        cameraRotation.x += (mouseY * (_mouseSensitivityV / 10f)) * _invertH;
-        _camera.gameObject.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(cameraRotation.x, 5, 25), Vector3.right);
+        if (cameraRotation.x > 180)
+        {
+            cameraRotation.x = cameraRotation.x - 360;  // Sets our working numbers between -180 - 180  
+        }
+
+        cameraRotation.x = Mathf.Clamp(cameraRotation.x, -30, 30);
+        float newRotation = cameraRotation.x + (mouseY * (_mouseSensitivityV / 10f)) * _invertH;
+        _camera.gameObject.transform.localRotation = Quaternion.AngleAxis(newRotation, Vector3.right);
+       
+        // cameraRotation.x += (mouseY * (_mouseSensitivityV / 10f)) * _invertH;
+        //_camera.gameObject.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(cameraRotation.x, 0, 35), Vector3.right);
+
+        // _camera.gameObject.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(cameraRotation.x, 0, 35), Vector3.right);
         #endregion
+
+
     }
 
     private void CameraMovementController()
@@ -120,7 +133,10 @@ public class Player : MonoBehaviour
         //up and down
         Vector3 cameraRotation = _camera.gameObject.transform.localEulerAngles;
         cameraRotation.x += (controllerY * (_mouseSensitivityV / 10f)) * _invertH;
-        _camera.gameObject.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(cameraRotation.x, 7, 25), Vector3.right);
+        _camera.gameObject.transform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(cameraRotation.x, 0, 35), Vector3.right);
+      
+
+        
         #endregion
     }
 
